@@ -5,17 +5,27 @@ import TodoItem from './TodoItems';
 import TodoList from './TodoList';
 import TodoSearch from './TodoSearch';
 
-const defaultTodos = [
-  { id: 10, text: 'Cortar Cebolla', completed: false },
-  { id: 11, text: 'curos 1', completed: false },
-  { id: 22, text: 'Cortar', completed: true },
-  { id: 33, text: 'curso 3', completed: true },
-  { id: 14, text: 'curso 4', completed: false },
-];
+// const defaultTodos = [
+//   { id: 10, text: 'Cortar Cebolla', completed: false },
+//   { id: 11, text: 'curos 1', completed: false },
+//   { id: 22, text: 'Cortar', completed: true },
+//   { id: 33, text: 'curso 3', completed: true },
+//   { id: 14, text: 'curso 4', completed: false },
+// ];
+
+// localStorage.setItem('TODOS', JSON.stringify(defaultTodos));
 
 export default function App() {
+  const todosLocal = localStorage.getItem('TODOS');
+  let parseTodos;
+  if (!todosLocal) {
+    localStorage.setItem('TODOS', JSON.stringify([]));
+    parseTodos = [];
+  } else {
+    parseTodos = JSON.parse(todosLocal);
+  }
   // estado para el h1 => totales completados
-  const [todos, setTodos] = React.useState(defaultTodos);
+  const [todos, setTodos] = React.useState(parseTodos);
   const completedTodos = todos.filter((i) => i.completed).length;
   const totalTodos = todos.length;
 
@@ -23,6 +33,12 @@ export default function App() {
   const [searchValue, setSearchValue] = React.useState('');
   // converir en minusculas
   const textSearch = searchValue.toLocaleLowerCase();
+
+  // guardar en localStorage
+  const saveTodos = (newTodos) => {
+    localStorage.setItem('TODOS', JSON.stringify(newTodos));
+    setTodos(newTodos);
+  };
 
   // funcion para completar
   const marcarCompletado = (id) => {
@@ -36,7 +52,7 @@ export default function App() {
       newTodos[todo].completed = true;
     }
 
-    setTodos(newTodos);
+    saveTodos(newTodos);
   };
 
   // delete
@@ -44,7 +60,7 @@ export default function App() {
     const newTodo = [...todos];
     const indexTodo = newTodo.findIndex((i) => i.id === id);
     newTodo.splice(indexTodo, 1);
-    setTodos(newTodo);
+    saveTodos(newTodo);
   };
 
   return (

@@ -15,17 +15,26 @@ import TodoSearch from './TodoSearch';
 
 // localStorage.setItem('TODOS', JSON.stringify(defaultTodos));
 
-export default function App() {
-  const todosLocal = localStorage.getItem('TODOS');
-  let parseTodos;
-  if (!todosLocal) {
-    localStorage.setItem('TODOS', JSON.stringify([]));
-    parseTodos = [];
+const useLocalStorage = (itemName, initialValue) => {
+  const localStorageItem = localStorage.getItem(itemName);
+  let parseItem;
+  if (!localStorageItem) {
+    localStorage.setItem(itemName, JSON.stringify(initialValue));
+    parseItem = [];
   } else {
-    parseTodos = JSON.parse(todosLocal);
+    parseItem = JSON.parse(localStorageItem);
   }
+  const [item, setItem] = React.useState(parseItem);
+  const saveItem = (newItem) => {
+    localStorage.setItem(itemName, JSON.stringify(newItem));
+    setItem(newItem);
+  };
+  return [item, saveItem];
+};
+
+export default function App() {
   // estado para el h1 => totales completados
-  const [todos, setTodos] = React.useState(parseTodos);
+  const [todos, saveTodos] = useLocalStorage('TODOS', []);
   const completedTodos = todos.filter((i) => i.completed).length;
   const totalTodos = todos.length;
 
@@ -33,13 +42,6 @@ export default function App() {
   const [searchValue, setSearchValue] = React.useState('');
   // converir en minusculas
   const textSearch = searchValue.toLocaleLowerCase();
-
-  // guardar en localStorage
-  const saveTodos = (newTodos) => {
-    localStorage.setItem('TODOS', JSON.stringify(newTodos));
-    setTodos(newTodos);
-  };
-
   // funcion para completar
   const marcarCompletado = (id) => {
     // copiar

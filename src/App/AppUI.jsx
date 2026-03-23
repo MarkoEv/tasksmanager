@@ -6,52 +6,53 @@ import TodoSearch from '../TodoSearch';
 import { TodosLoading } from '../TodosLoading/';
 import { TodosError } from '../TodosError/';
 import { EmptyTodos } from '../EmptyTodos/';
+import { TodoContext } from '../TodoContext/';
 
-function AppUI({
-  loading,
-  error,
-  todos,
-  completedTodos,
-  totalTodos,
-  searchValue,
-  setSearchValue,
-  deleteItem,
-  marcarCompletado,
-  textSearch,
-}) {
+function AppUI() {
   return (
     <>
-      <TodoCount completed={completedTodos} total={totalTodos} />
+      <TodoCount />
       <TodoButton />
-      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
+      <TodoSearch />
 
-      <TodoList>
-        {loading && (
-          <>
-            <TodosLoading />
-            <TodosLoading />
-            <TodosLoading />
-            <TodosLoading />
-            <TodosLoading />
-          </>
+      <TodoContext.Consumer>
+        {({
+          loading,
+          error,
+          todos,
+          deleteItem,
+          marcarCompletado,
+          textSearch,
+        }) => (
+          <TodoList>
+            {loading && (
+              <>
+                <TodosLoading />
+                <TodosLoading />
+                <TodosLoading />
+                <TodosLoading />
+                <TodosLoading />
+              </>
+            )}
+            {error && <TodosError />}
+            {!loading && todos.length === 0 && <EmptyTodos />}
+
+            {todos
+              .filter((i) => {
+                return i.text.toLocaleLowerCase().includes(textSearch);
+              })
+              .map((item) => (
+                <TodoItem
+                  key={item.id}
+                  text={item.text}
+                  completed={item.completed}
+                  onComplete={() => marcarCompletado(item.id)}
+                  onDelete={() => deleteItem(item.id)}
+                />
+              ))}
+          </TodoList>
         )}
-        {error && <TodosError />}
-        {!loading && todos.length === 0 && <EmptyTodos />}
-
-        {todos
-          .filter((i) => {
-            return i.text.toLocaleLowerCase().includes(textSearch);
-          })
-          .map((item) => (
-            <TodoItem
-              key={item.id}
-              text={item.text}
-              completed={item.completed}
-              onComplete={() => marcarCompletado(item.id)}
-              onDelete={() => deleteItem(item.id)}
-            />
-          ))}
-      </TodoList>
+      </TodoContext.Consumer>
     </>
   );
 }

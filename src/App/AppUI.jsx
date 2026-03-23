@@ -3,6 +3,9 @@ import TodoCount from '../TodoCount';
 import TodoItem from '../TodoItems';
 import TodoList from '../TodoList';
 import TodoSearch from '../TodoSearch';
+import { TodosLoading } from '../TodosLoading/';
+import { TodosError } from '../TodosError/';
+import { EmptyTodos } from '../EmptyTodos/';
 
 function AppUI({
   loading,
@@ -24,17 +27,16 @@ function AppUI({
 
       <TodoList>
         {loading && (
-          <div className="w-100">
-            Cargando...
-            <span className="h-10 w-10 animate-spin rounded-b-full"></span>
-          </div>
+          <>
+            <TodosLoading />
+            <TodosLoading />
+            <TodosLoading />
+            <TodosLoading />
+            <TodosLoading />
+          </>
         )}
-
-        {error && <span>Error</span>}
-        {/* 
-        {!loading && searchValue.length === 0 && (
-          <span>Crea Tu primer todo</span>
-        )} */}
+        {error && <TodosError />}
+        {!loading && todos.length === 0 && <EmptyTodos />}
 
         {todos
           .filter((i) => {

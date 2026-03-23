@@ -1,10 +1,6 @@
 import React from 'react';
-import TodoButton from './TodoButton';
-import TodoCount from './TodoCount';
-import TodoItem from './TodoItems';
-import TodoList from './TodoList';
-import TodoSearch from './TodoSearch';
-
+import { useLocalStorage } from './useLocalStorage';
+import { AppUI } from './AppUI';
 // const defaultTodos = [
 //   { id: 10, text: 'Cortar Cebolla', completed: false },
 //   { id: 11, text: 'curos 1', completed: false },
@@ -14,23 +10,6 @@ import TodoSearch from './TodoSearch';
 // ];
 
 // localStorage.setItem('TODOS', JSON.stringify(defaultTodos));
-
-const useLocalStorage = (itemName, initialValue) => {
-  const localStorageItem = localStorage.getItem(itemName);
-  let parseItem;
-  if (!localStorageItem) {
-    localStorage.setItem(itemName, JSON.stringify(initialValue));
-    parseItem = [];
-  } else {
-    parseItem = JSON.parse(localStorageItem);
-  }
-  const [item, setItem] = React.useState(parseItem);
-  const saveItem = (newItem) => {
-    localStorage.setItem(itemName, JSON.stringify(newItem));
-    setItem(newItem);
-  };
-  return [item, saveItem];
-};
 
 export default function App() {
   // estado para el h1 => totales completados
@@ -66,26 +45,15 @@ export default function App() {
   };
 
   return (
-    <>
-      <TodoCount completed={completedTodos} total={totalTodos} />
-      <TodoButton />
-      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
-
-      <TodoList>
-        {todos
-          .filter((i) => {
-            return i.text.toLocaleLowerCase().includes(textSearch);
-          })
-          .map((item) => (
-            <TodoItem
-              key={item.id}
-              text={item.text}
-              completed={item.completed}
-              onComplete={() => marcarCompletado(item.id)}
-              onDelete={() => deleteItem(item.id)}
-            />
-          ))}
-      </TodoList>
-    </>
+    <AppUI
+      completedTodos={completedTodos}
+      totalTodos={totalTodos}
+      searchValue={searchValue}
+      setSearchValue={setSearchValue}
+      textSearch={textSearch}
+      marcarCompletado={marcarCompletado}
+      deleteItem={deleteItem}
+      todos={todos}
+    />
   );
 }

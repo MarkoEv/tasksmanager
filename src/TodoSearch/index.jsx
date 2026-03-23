@@ -1,4 +1,8 @@
-const TodoSearch = ({ searchValue, setSearchValue }) => {
+import React from 'react';
+import { TodoContext } from '../TodoContext';
+
+const TodoSearch = () => {
+  const { searchValue, setSearchValue } = React.useContext(TodoContext);
   return (
     <>
       <div className="grid gap-2 p-5">

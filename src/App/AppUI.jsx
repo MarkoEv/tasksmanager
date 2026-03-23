@@ -5,6 +5,8 @@ import TodoList from '../TodoList';
 import TodoSearch from '../TodoSearch';
 
 function AppUI({
+  loading,
+  error,
   todos,
   completedTodos,
   totalTodos,
@@ -21,6 +23,19 @@ function AppUI({
       <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
 
       <TodoList>
+        {loading && (
+          <div className="w-100">
+            Cargando...
+            <span className="h-10 w-10 animate-spin rounded-b-full"></span>
+          </div>
+        )}
+
+        {error && <span>Error</span>}
+        {/* 
+        {!loading && searchValue.length === 0 && (
+          <span>Crea Tu primer todo</span>
+        )} */}
+
         {todos
           .filter((i) => {
             return i.text.toLocaleLowerCase().includes(textSearch);

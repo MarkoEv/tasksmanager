@@ -13,7 +13,12 @@ import { AppUI } from './AppUI';
 
 export default function App() {
   // estado para el h1 => totales completados
-  const [todos, saveTodos] = useLocalStorage('TODOS', []);
+  const {
+    item: todos,
+    saveItem: saveTodos,
+    loading,
+    error,
+  } = useLocalStorage('TODOS', []);
   const completedTodos = todos.filter((i) => i.completed).length;
   const totalTodos = todos.length;
 
@@ -46,6 +51,8 @@ export default function App() {
 
   return (
     <AppUI
+      loading={loading}
+      error={error}
       completedTodos={completedTodos}
       totalTodos={totalTodos}
       searchValue={searchValue}

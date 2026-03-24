@@ -7,6 +7,7 @@ import TodoSearch from '../TodoSearch';
 import { TodosLoading } from '../TodosLoading/';
 import { TodosError } from '../TodosError/';
 import { EmptyTodos } from '../EmptyTodos/';
+import { ItemForm } from '../ItemForm/';
 import Modal from '../modal';
 import { TodoContext } from '../TodoContext/';
 
@@ -53,7 +54,11 @@ function AppUI() {
             />
           ))}
       </TodoList>
-      {openModal && <Modal>La funcion de agregar Todo</Modal>}
+      {openModal && (
+        <Modal>
+          <ItemForm />
+        </Modal>
+      )}
     </>
   );
 }

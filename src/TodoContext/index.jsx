@@ -16,10 +16,23 @@ export function TodoProvider({ children }) {
 
   // estado de search
   const [searchValue, setSearchValue] = React.useState('');
-  // estado modAL
-  const [openModal, setOpenModal] = React.useState(false);
   // converir en minusculas
   const textSearch = searchValue.toLocaleLowerCase();
+
+  // estado modAL
+  const [openModal, setOpenModal] = React.useState(false);
+  // agregar nuevo todo
+  const addTodo = (text) => {
+    const newTodos = [...todos];
+    // identificar
+    newTodos.push({
+      id: new Date().getTime(),
+      text,
+      completed: false,
+    });
+    saveTodos(newTodos);
+  };
+
   // funcion para completar
   const marcarCompletado = (id) => {
     // copiar
@@ -53,6 +66,7 @@ export function TodoProvider({ children }) {
         searchValue,
         setSearchValue,
         deleteItem,
+        addTodo,
         marcarCompletado,
         textSearch,
         openModal,

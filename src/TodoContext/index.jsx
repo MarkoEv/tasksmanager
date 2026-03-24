@@ -16,6 +16,8 @@ export function TodoProvider({ children }) {
 
   // estado de search
   const [searchValue, setSearchValue] = React.useState('');
+  // estado modAL
+  const [openModal, setOpenModal] = React.useState(false);
   // converir en minusculas
   const textSearch = searchValue.toLocaleLowerCase();
   // funcion para completar
@@ -53,6 +55,8 @@ export function TodoProvider({ children }) {
         deleteItem,
         marcarCompletado,
         textSearch,
+        openModal,
+        setOpenModal,
       }}
     >
       {children}

@@ -2,16 +2,73 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8" />
+  <meta charset=" UTF-8" />
+  <!-- Responsive -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <!--  SEO Core -->
+  <title>Tasks | Gestor de Tareas Rápido, Minimalista y Productivo</title>
+  <meta name="description"
+    content="Gestiona tus tareas de forma rápida, simple y eficiente con Tasks. Organiza pendientes, mejora tu productividad y mantén el control de tu día." />
+  <meta name="keywords"
+    content="tareas, gestor de tareas, productividad, lista de tareas, todo app, organización, pendientes, app tareas" />
+  <meta name="author" content="Marco Antonio Evangelista Armenta" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://tasksmanager-kappa.vercel.app/" />
+  <!-- Theme -->
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="color-scheme" content="light dark" />
+  <!--  Performance -->
+  <link rel="preload" href="/icon/icon.png" as="image" />
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tasks | Gestor de Tareas" />
+  <meta property="og:description" content="Organiza tus tareas de forma rápida y mejora tu productividad." />
+  <meta property="og:image" content="https://tasksmanager-kappa.vercel.app/icon/icon.png" />
+  <meta property="og:url" content="https://tasksmanager-kappa.vercel.app/" />
+  <meta property="og:site_name" content="Tasks App" />
+  <meta property="og:locale" content="es_MX" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Tasks | Gestor de Tareas" />
+  <meta name="twitter:description" content="Organiza tareas fácilmente y mejora tu productividad." />
+  <meta name="twitter:image" content="https://tasksmanager-kappa.vercel.app/icon/icon.png" />
+  <!-- PWA -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Tasks" />
+  <link rel="apple-touch-icon" href="/icon/icon.png" />
+  <!--  Seguridad -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!--  Datos estructurados (Schema.org) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Tasks",
+    "url": "https://tasksmanager-kappa.vercel.app/",
+    "description": "Aplicación para gestionar tareas de forma rápida y sencilla.",
+    "applicationCategory": "ProductivityApplication",
+    "operatingSystem": "All",
+    "creator": {
+      "@type": "Person",
+      "name": "Marco Antonio Evangelista Armenta"
+    }
+  }
+  </script>
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="/icon/icon.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tasks</title>
 </head>
 
-<body>
-  <header className="w-full p-4"></header>
-  <div id="root" class="md:grid lg:grid md:grid-cols-4 lg:grid-cols-4"></div>
+<body class="transition-colors duration-300 antialiased">
+  <header class="w-full p-4 dark:bg-white/5 bg-gray-100"></header>
+  <div id="root" class="dark:bg-white/5 bg-gray-100 md:grid lg:grid md:grid-cols-4 lg:grid-cols-4 h-screen"></div>
   <div id="modal"></div>
+  <noscript>
+    Necesitas habilitar JavaScript para usar esta aplicación.
+  </noscript>
   <script type="module" src="/src/main.jsx"></script>
 </body>
 

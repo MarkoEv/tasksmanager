@@ -10,6 +10,7 @@ import { EmptyTodos } from '../EmptyTodos/';
 import { ItemForm } from '../ItemForm/';
 import Modal from '../modal';
 import { TodoContext } from '../TodoContext/';
+import Header from '../header';
 
 function AppUI() {
   const {
@@ -23,6 +24,7 @@ function AppUI() {
   } = React.useContext(TodoContext);
   return (
     <>
+      <Header />
       <TodoButton />
       <TodoList>
         <TodoCount />

@@ -3,7 +3,6 @@ import { TodoContext } from '../TodoContext';
 
 // icons import
 import { FaTrashAlt, FaSearch, FaHandPointLeft } from 'react-icons/fa';
-import { FaGithub } from 'react-icons/fa6';
 import { IoReloadOutline } from 'react-icons/io5';
 import { TiPlus } from 'react-icons/ti';
 
@@ -55,16 +54,6 @@ function TodoButton() {
           <div className="flex items-center gap-3">
             <FaSearch className={`${iconStyle} text-yellow-400`} />
             <span className="font-medium">Buscar Tarea</span>
-          </div>
-          <FaHandPointLeft className="translate-x-2 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100" />
-        </button>
-
-        <button
-          className={`${baseBtn} border-gray-400/20 hover:border-gray-400/50`}
-        >
-          <div className="flex items-center gap-3">
-            <FaGithub className={`${iconStyle}`} />
-            <span className="font-medium">Github</span>
           </div>
           <FaHandPointLeft className="translate-x-2 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100" />
         </button>

@@ -10,7 +10,7 @@ import { EmptyTodos } from '../EmptyTodos/';
 import { ItemForm } from '../ItemForm/';
 import Modal from '../modal';
 import { TodoContext } from '../TodoContext/';
-import Header from '../Header';
+import Header from '../Header/';
 
 function AppUI() {
   const {

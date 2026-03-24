@@ -7,6 +7,22 @@ export function TodoProvider({ children }) {
   // useRef
   const searchRef = useRef(null);
 
+  // localStorage => estado inicial
+  const [darkMode, setDarkMode] = React.useState(() => {
+    return localStorage.getItem('theme') === 'true';
+  });
+
+  const toggleDarkMode = () => {
+    setDarkMode((mode) => {
+      localStorage.setItem('theme', !mode);
+      return !mode;
+    });
+  };
+  // cada vez que darkMode cambpa
+  React.useEffect(() => {
+    document.documentElement.classList.toggle('dark', darkMode);
+  }, [darkMode]);
+
   // estado para el h1 => totales completados
   const {
     item: todos,
@@ -83,6 +99,8 @@ export function TodoProvider({ children }) {
         setOpenModal,
         trashHistorial,
         searchRef,
+        darkMode,
+        toggleDarkMode,
       }}
     >
       {children}

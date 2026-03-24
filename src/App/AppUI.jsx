@@ -20,14 +20,13 @@ function AppUI() {
     marcarCompletado,
     textSearch,
     openModal,
-    setOpenModal,
   } = React.useContext(TodoContext);
   return (
     <>
-      <TodoCount />
       <TodoButton />
-      <TodoSearch />
       <TodoList>
+        <TodoCount />
+        <TodoSearch />
         {loading && (
           <>
             <TodosLoading />

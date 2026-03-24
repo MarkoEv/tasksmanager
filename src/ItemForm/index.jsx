@@ -1,51 +1,53 @@
 import React from 'react';
 import { TodoContext } from '../TodoContext';
+import { FaPlus, FaTimes } from 'react-icons/fa';
 
 function ItemForm() {
   const { setOpenModal, addTodo } = React.useContext(TodoContext);
 
-  // estado local
   const [newValues, setNewValues] = React.useState('');
-  // recibir el evento
+
   const onChange = (e) => {
     setNewValues(e.target.value);
   };
-  // al dar click en agregar
+
   const onClick = () => {
-    if (newValues) {
+    if (newValues.trim()) {
       addTodo(newValues);
       setOpenModal(false);
     } else {
-      alert('No puedes guardar una tarea vacía, el campo es obligatorio');
+      alert('No puedes guardar una tarea vacía');
     }
   };
 
   return (
-    <div className="grid w-full gap-5 p-5">
-      <div className="grid justify-center gap-2">
-        <label className="text-xl" htmlFor="item">
-          ¿Qué vas a comprar Hoy?
-        </label>
-        <textarea
-          placeholder="Escribe aquí..."
-          className="h-23 w-full rounded-2xl bg-white/10 p-5"
-          value={newValues}
-          onChange={onChange}
-        />
+    <div className="flex flex-col gap-6">
+      <div>
+        <h2 className="text-xl font-semibold text-white">Nueva tarea</h2>
+        <p className="text-sm text-gray-400">¿Qué vas a hacer hoy?</p>
       </div>
-      <div className="flex justify-center gap-2">
+
+      <textarea
+        placeholder="Escribe tu tarea..."
+        className="h-28 w-full resize-none rounded-2xl border border-white/10 bg-white/5 p-4 text-white transition-all duration-300 outline-none placeholder:text-gray-400 focus:border-white/30 focus:bg-white/10"
+        value={newValues}
+        onChange={onChange}
+      />
+
+      <div className="flex justify-end gap-3">
         <button
-          className="h-10 w-30 cursor-pointer rounded-3xl bg-red-500 text-white hover:opacity-45"
-          onClick={() => {
-            setOpenModal(false);
-          }}
+          className="flex items-center gap-2 rounded-xl bg-red-500/80 px-4 py-2 text-white transition-all duration-300 hover:scale-105 hover:bg-red-500"
+          onClick={() => setOpenModal(false)}
         >
+          <FaTimes />
           Cancelar
         </button>
+
         <button
-          className="h-10 w-30 cursor-pointer rounded-3xl bg-white text-black hover:opacity-45"
+          className="flex items-center gap-2 rounded-xl bg-green-500/80 px-4 py-2 text-white transition-all duration-300 hover:scale-105 hover:bg-green-500"
           onClick={onClick}
         >
+          <FaPlus />
           Agregar
         </button>
       </div>

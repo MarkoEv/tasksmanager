@@ -1,27 +1,34 @@
-import { FaCheckCircle } from 'react-icons/fa';
-import { FaTrash } from 'react-icons/fa';
+import { FaCheckCircle, FaTrash } from 'react-icons/fa';
 
 function TodoItem(props) {
   return (
-    <li className="flex justify-between rounded-xl border border-blue-800 p-3 text-xl opacity-80 hover:opacity-100">
+    <li className="group flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 shadow-md backdrop-blur-md transition-all duration-300 hover:bg-white/10 hover:shadow-lg">
       <button
-        className={
-          props.completed ? 'text-green-500' : 'cursor-pointer text-white'
-        }
+        className={`transition-all duration-300 ${
+          props.completed
+            ? 'scale-110 text-green-400'
+            : 'text-gray-400 hover:scale-110 hover:text-green-400'
+        }`}
         onClick={props.onComplete}
       >
-        <FaCheckCircle size={20} />
+        <FaCheckCircle size={22} />
       </button>
-      <p className={`${props.completed ? 'line-through' : ''}`}>{props.text}</p>
+      <p
+        className={`flex-1 text-sm transition-all duration-300 md:text-base ${
+          props.completed ? 'text-gray-400 line-through' : 'text-white'
+        }`}
+      >
+        {props.text}
+      </p>
       <button
-        className="btn cursor-pointer text-center text-[17px]"
+        className="text-red-400 opacity-70 transition-all duration-300 hover:scale-110 hover:opacity-100"
         onClick={() => {
-          if (confirm('Estás seguro de eliminarlo')) {
+          if (confirm('¿Estás seguro de eliminar esta tarea?')) {
             props.onDelete();
           }
         }}
       >
-        <FaTrash size={20} color="red" />
+        <FaTrash size={20} />
       </button>
     </li>
   );

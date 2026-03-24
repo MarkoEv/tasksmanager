@@ -2,8 +2,10 @@ import ReactDOM from 'react-dom';
 
 function Modal({ children }) {
   return ReactDOM.createPortal(
-    <div className="fixed inset-0 flex h-screen w-full items-center justify-center bg-gray-900/80">
-      <div className="h-60 w-120 rounded-2xl bg-gray-800">{children}</div>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm">
+      <div className="w-[90%] max-w-md animate-[fadeIn_.3s_ease] rounded-2xl border border-white/10 bg-white/5 p-6 shadow-xl backdrop-blur-md">
+        {children}
+      </div>
     </div>,
     document.getElementById('modal')
   );

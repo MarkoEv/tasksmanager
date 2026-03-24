@@ -1,26 +1,25 @@
 import React from 'react';
 import { TodoContext } from '../TodoContext';
+import { FaSearch } from 'react-icons/fa';
 
 const TodoSearch = () => {
   const { searchValue, setSearchValue } = React.useContext(TodoContext);
+
   return (
-    <>
-      <div className="grid gap-2 p-5">
-        <label form="search" className="text-2xl">
-          Buscador :
-        </label>
+    <div className="w-full">
+      <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 shadow-md backdrop-blur-md transition-all duration-300 focus-within:bg-white/10 focus-within:shadow-lg">
+        <FaSearch className="text-lg text-gray-400" />
         <input
           name="search"
-          placeholder="Buscador"
-          className="rounded-2xl border bg-transparent p-2 text-3xl text-white"
+          placeholder="Buscar tarea..."
+          className="w-full bg-transparent text-sm text-white outline-none placeholder:text-gray-400 md:text-base"
           value={searchValue}
           onChange={(e) => {
             setSearchValue(e.target.value);
-            // console.log(searchValue);
           }}
         />
       </div>
-    </>
+    </div>
   );
 };
 

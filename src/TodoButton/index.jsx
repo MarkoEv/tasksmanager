@@ -7,7 +7,18 @@ import { IoReloadOutline } from 'react-icons/io5';
 import { TiPlus } from 'react-icons/ti';
 
 function TodoButton() {
-  const { setOpenModal } = React.useContext(TodoContext);
+  const { setOpenModal, trashHistorial, searchRef } =
+    React.useContext(TodoContext);
+  const reload = () => {
+    window.location.reload();
+  };
+
+  // confirmar si desea eliminar el historial
+  function confirmTrash() {
+    if (confirm('¿Estás segur@ de eliminar todas las tareas?')) {
+      trashHistorial();
+    }
+  }
 
   const baseBtn =
     'group cursor-pointer flex items-center justify-between gap-3 w-full px-4 py-3 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md text-white shadow-md transition-all duration-300 hover:scale-[1.03] hover:bg-white/10 hover:shadow-lg';
@@ -26,17 +37,26 @@ function TodoButton() {
             <span className="text-[10px] text-gray-400">Nueva</span>
           </button>
 
-          <button className="flex flex-col items-center text-red-400 transition-all active:scale-90">
+          <button
+            className="flex flex-col items-center text-red-400 transition-all active:scale-90"
+            onClick={confirmTrash}
+          >
             <FaTrashAlt className="text-xl" />
             <span className="text-[10px] text-gray-400">Limpiar</span>
           </button>
 
-          <button className="flex flex-col items-center text-blue-400 transition-all active:scale-90">
+          <button
+            className="flex flex-col items-center text-blue-400 transition-all active:scale-90"
+            onClick={reload}
+          >
             <IoReloadOutline className="text-xl" />
             <span className="text-[10px] text-gray-400">Reload</span>
           </button>
 
-          <button className="flex flex-col items-center text-yellow-400 transition-all active:scale-90">
+          <button
+            className="flex flex-col items-center text-yellow-400 transition-all active:scale-90"
+            onClick={() => searchRef.current?.focus()}
+          >
             <FaSearch className="text-xl" />
             <span className="text-[10px] text-gray-400">Buscar</span>
           </button>
@@ -57,6 +77,7 @@ function TodoButton() {
 
           <button
             className={`${baseBtn} border-red-400/20 hover:border-red-400/50`}
+            onClick={confirmTrash}
           >
             <div className="flex items-center gap-3">
               <FaTrashAlt className={`${iconStyle} text-red-400`} />
@@ -67,6 +88,7 @@ function TodoButton() {
 
           <button
             className={`${baseBtn} border-blue-400/20 hover:border-blue-400/50`}
+            onClick={reload}
           >
             <div className="flex items-center gap-3">
               <IoReloadOutline className={`${iconStyle} text-blue-400`} />
@@ -77,6 +99,7 @@ function TodoButton() {
 
           <button
             className={`${baseBtn} border-yellow-400/20 hover:border-yellow-400/50`}
+            onClick={() => searchRef.current?.focus()}
           >
             <div className="flex items-center gap-3">
               <FaSearch className={`${iconStyle} text-yellow-400`} />

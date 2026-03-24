@@ -34,9 +34,9 @@ function ItemForm() {
         onChange={onChange}
       />
 
-      <div className="flex justify-end gap-3">
+      <div className="flex justify-center gap-3">
         <button
-          className="flex items-center gap-2 rounded-xl bg-red-500/80 px-4 py-2 text-white transition-all duration-300 hover:scale-105 hover:bg-red-500"
+          className="flex cursor-pointer items-center gap-2 rounded-xl bg-red-500/80 px-4 py-2 text-white transition-all duration-300 hover:scale-105 hover:bg-red-500"
           onClick={() => setOpenModal(false)}
         >
           <FaTimes />
@@ -44,7 +44,7 @@ function ItemForm() {
         </button>
 
         <button
-          className="flex items-center gap-2 rounded-xl bg-green-500/80 px-4 py-2 text-white transition-all duration-300 hover:scale-105 hover:bg-green-500"
+          className="flex cursor-pointer items-center gap-2 rounded-xl bg-green-500/80 px-4 py-2 text-white transition-all duration-300 hover:scale-105 hover:bg-green-500"
           onClick={onClick}
         >
           <FaPlus />

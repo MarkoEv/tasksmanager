@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useLocalStorage } from './useLocalStorage';
 
 export const TodoContext = React.createContext();
 
 export function TodoProvider({ children }) {
+  // useRef
+  const searchRef = useRef(null);
+
   // estado para el h1 => totales completados
   const {
     item: todos,
@@ -21,6 +24,7 @@ export function TodoProvider({ children }) {
 
   // estado modAL
   const [openModal, setOpenModal] = React.useState(false);
+
   // agregar nuevo todo
   const addTodo = (text) => {
     const newTodos = [...todos];
@@ -48,6 +52,12 @@ export function TodoProvider({ children }) {
     saveTodos(newTodos);
   };
 
+  // limpiar historial
+  const trashHistorial = () => {
+    const trashTodos = [];
+    saveTodos(trashTodos);
+  };
+
   // delete
   const deleteItem = (id) => {
     const newTodo = [...todos];
@@ -71,6 +81,8 @@ export function TodoProvider({ children }) {
         textSearch,
         openModal,
         setOpenModal,
+        trashHistorial,
+        searchRef,
       }}
     >
       {children}

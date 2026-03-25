@@ -2,7 +2,7 @@ import { FaClipboardList } from 'react-icons/fa';
 
 function EmptyTodos() {
   return (
-    <div className="flex flex-col items-center justify-center gap-4 rounded-2xl border border-gray-200 bg-white p-8 text-center text-black shadow-md transition-all duration-300 dark:border-white/10 dark:bg-white/5 dark:text-white dark:backdrop-blur-md">
+    <div className="flex flex-col items-center justify-center gap-4 rounded-2xl border border-gray-200 bg-white p-8 text-center text-black shadow-md dark:border-white/10 dark:bg-white/5 dark:text-white dark:backdrop-blur-md">
       <div className="text-5xl text-gray-400 opacity-80 dark:text-gray-500">
         <FaClipboardList />
       </div>

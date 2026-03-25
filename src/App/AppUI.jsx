@@ -10,6 +10,7 @@ import { EmptyTodos } from '../EmptyTodos/';
 import { ItemForm } from '../ItemForm/';
 import Modal from '../modal';
 import { TodoContext } from '../TodoContext/';
+import { TodoInfo } from '../TodoInfo/';
 import Header from '../Header/';
 
 function AppUI() {
@@ -27,6 +28,7 @@ function AppUI() {
       <Header />
       <TodoButton />
       <TodoList>
+        <TodoInfo />
         <TodoCount />
         <TodoSearch />
         {loading && (

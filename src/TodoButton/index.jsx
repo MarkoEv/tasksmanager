@@ -21,7 +21,7 @@ function TodoButton() {
   }
 
   const baseBtn =
-    'group cursor-pointer flex items-center justify-between gap-3 w-full px-4 py-3 rounded-2xl transition-all duration-300 ' +
+    'group cursor-pointer flex items-center justify-between gap-3 w-full px-4 py-3 rounded-2xl  ' +
     'bg-white text-black border border-gray-200 shadow-md hover:scale-[1.03] hover:bg-gray-100 hover:shadow-lg ' +
     'dark:bg-white/5 dark:text-white dark:border-white/10 dark:backdrop-blur-md dark:hover:bg-white/10';
 

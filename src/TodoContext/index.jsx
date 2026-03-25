@@ -7,9 +7,10 @@ export function TodoProvider({ children }) {
   // useRef
   const searchRef = useRef(null);
 
-  // localStorage => estado inicial
+  // localStorage => estado inicial : por defecto dark
   const [darkMode, setDarkMode] = React.useState(() => {
-    return localStorage.getItem('theme') === 'true';
+    const theme = localStorage.getItem('theme');
+    return theme !== null ? theme === 'true' : true;
   });
 
   const toggleDarkMode = () => {

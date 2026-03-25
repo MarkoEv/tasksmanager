@@ -1,18 +1,59 @@
-# React + Vite
+# Tasks — Gestor de Tareas v.2
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Aplicación web moderna para gestionar tareas de forma rápida, visual y eficiente. Construida con **React** y **Tailwind CSS**.
 
-Currently, two official plugins are available:
+**Deploy:** [listtasksapp.netlify.app](https://listtasksapp.netlify.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Características
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- Crear, completar y eliminar tareas individuales
+- Limpiar todas las tareas de una sola acción
+- Búsqueda en tiempo real
+- Indicador de progreso de tareas completadas
+- Modo oscuro dinámico (persistente)
+- Persistencia de datos con **localStorage**
+- Diseño **responsive** — barra de acciones rápida en móvil
+- Interfaz moderna con animaciones suaves y diseño minimalista
 
-Note: This will impact Vite dev & build performances.
+---
 
-## Expanding the ESLint configuration
+## Tecnologías
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Prettier](https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=black)
+
+---
+
+## Instalación
+
+```bash
+# 1. Clona el repositorio
+git clone https://github.com/MarkoEv/tasksmanager.git
+
+# 2. Entra al proyecto
+cd tasksmanager
+
+# 3. Instala dependencias
+npm install
+
+# 4. Ejecuta en desarrollo
+npm run dev
+```
+
+---
+
+## Autor
+
+**Marco Antonio Evangelista Armenta**
+[@MarkoEv](https://github.com/MarkoEv) — Desarrollador Web
+
+---
+
+## Licencia
+
+Proyecto de uso libre para fines educativos y personales.

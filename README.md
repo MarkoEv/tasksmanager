@@ -1,8 +1,8 @@
-# Tasks — Gestor de Tareas v.2
+# TasksManager v.2
 
 > Aplicación web moderna para gestionar tareas de forma rápida, visual y eficiente. Construida con **React** y **Tailwind CSS**.
 
-**Deploy:** [listtasksapp.netlify.app](https://listtasksapp.netlify.app)
+**Deploy:** [tasksmanager](https://tasksmanager-kappa.vercel.app/)
 
 ---
 

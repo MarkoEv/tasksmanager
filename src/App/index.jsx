@@ -81,6 +81,7 @@ export default function App() {
           searchValue={searchValue}
           setSearchValue={setSearchValue}
           searchRef={searchRef}
+          loading={loading}
         />
       </TodoList>
 

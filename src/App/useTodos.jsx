@@ -51,6 +51,7 @@ export function useTodos() {
       completed: false,
     });
     saveTodos(newTodos);
+    setSearchValue('');
   };
 
   // funcion para completar

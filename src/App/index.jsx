@@ -12,6 +12,7 @@ import Modal from '../modal';
 import { TodoInfo } from '../TodoInfo/';
 import Header from '../Header/';
 import { useTodos } from './useTodos';
+import { EmptySearchResults } from '../TodoSearch/EmptySearchResults';
 export default function App() {
   const {
     loading,
@@ -32,6 +33,20 @@ export default function App() {
     toggleDarkMode,
     trashHistorial,
   } = useTodos();
+
+  const todosResults = todos
+    .filter((i) => {
+      return i.text.toLocaleLowerCase().includes(textSearch);
+    })
+    .map((item) => (
+      <TodoItem
+        key={item.id}
+        text={item.text}
+        completed={item.completed}
+        onComplete={() => marcarCompletado(item.id)}
+        onDelete={() => deleteItem(item.id)}
+      />
+    ));
   return (
     <>
       <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
@@ -45,24 +60,19 @@ export default function App() {
         error={error}
         loading={loading}
         todos={todos}
-        textSearch={textSearch}
+        totalTodos={totalTodos}
+        searchValue={searchValue}
         onError={() => <TodosError />}
         onLoading={() => <TodosLoading />}
         onEmptyTodos={() => <EmptyTodos />}
+        onEmptySearchResults={() => (
+          <EmptySearchResults
+            textSearch={textSearch}
+            todosResults={todosResults}
+          />
+        )}
         render={() => {
-          return todos
-            .filter((i) => {
-              return i.text.toLocaleLowerCase().includes(textSearch);
-            })
-            .map((item) => (
-              <TodoItem
-                key={item.id}
-                text={item.text}
-                completed={item.completed}
-                onComplete={() => marcarCompletado(item.id)}
-                onDelete={() => deleteItem(item.id)}
-              />
-            ));
+          return todosResults;
         }}
       >
         <TodoInfo />

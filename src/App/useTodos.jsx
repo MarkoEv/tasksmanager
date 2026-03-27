@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useLocalStorage } from './useLocalStorage';
 
 export function useTodos() {
@@ -82,6 +82,25 @@ export function useTodos() {
     newTodo.splice(indexTodo, 1);
     saveTodos(newTodo);
   };
+
+  // si hay más ventanas : espera a escuchar evento para actulizar localstorage
+  useEffect(() => {
+    // manejar el storage
+    const handleStorage = (event) => {
+      if (event.key === 'TODOS') {
+        // console.log(event.newValue);
+        saveTodos(JSON.parse(event.newValue));
+      }
+    };
+
+    window.addEventListener('storage', handleStorage);
+
+    //  Limpieza al desmontar
+    return () => {
+      window.removeEventListener('storage', handleStorage);
+    };
+  }, []);
+
   return {
     loading,
     error,

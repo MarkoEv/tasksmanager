@@ -1,10 +1,7 @@
 import { FaCheckCircle } from 'react-icons/fa';
 import React from 'react';
-import { TodoContext } from '../TodoContext';
 
-const TodoCount = () => {
-  const { completedTodos, totalTodos } = React.useContext(TodoContext);
-
+const TodoCount = ({ completedTodos, totalTodos }) => {
   return (
     <div className="w-full">
       <div className="flex items-center justify-between gap-4 rounded-2xl border border-gray-200 bg-white p-4 text-black shadow-md hover:bg-gray-100 hover:shadow-lg dark:border-white/10 dark:bg-white/5 dark:text-white dark:backdrop-blur-md dark:hover:bg-white/10">

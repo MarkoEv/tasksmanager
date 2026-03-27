@@ -2,11 +2,8 @@ import React from 'react';
 import icono from '../../public/icon/icon.png';
 import ReactDOM from 'react-dom';
 import { FaGithub, FaMoon, FaSun } from 'react-icons/fa';
-import { TodoContext } from '../TodoContext';
 
-function Header() {
-  const { darkMode, toggleDarkMode } = React.useContext(TodoContext);
-
+function Header({ darkMode, toggleDarkMode }) {
   function githubLink() {
     const URL = 'https://github.com/MarkoEv';
     window.open(URL, '_blank', 'noopener,noreferrer');

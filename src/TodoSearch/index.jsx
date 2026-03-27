@@ -1,11 +1,7 @@
 import React from 'react';
-import { TodoContext } from '../TodoContext';
 import { FaSearch } from 'react-icons/fa';
 
-const TodoSearch = () => {
-  const { searchValue, setSearchValue, searchRef } =
-    React.useContext(TodoContext);
-
+const TodoSearch = ({ searchValue, setSearchValue, searchRef }) => {
   return (
     <div className="w-full">
       <div className="flex items-center gap-3 rounded-2xl border border-gray-200 bg-white px-4 py-3 shadow-md focus-within:border-black focus-within:shadow-lg dark:border-white/10 dark:bg-white/5 dark:backdrop-blur-md dark:focus-within:border-white dark:focus-within:bg-white/10">

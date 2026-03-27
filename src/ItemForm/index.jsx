@@ -1,10 +1,7 @@
 import React from 'react';
-import { TodoContext } from '../TodoContext';
 import { FaPlus, FaTimes } from 'react-icons/fa';
 
-function ItemForm() {
-  const { setOpenModal, addTodo } = React.useContext(TodoContext);
-
+function ItemForm({ setOpenModal, addTodo }) {
   const [newValues, setNewValues] = React.useState('');
 
   const onChange = (e) => {

@@ -1,9 +1,7 @@
 import React, { useRef } from 'react';
 import { useLocalStorage } from './useLocalStorage';
 
-export const TodoContext = React.createContext();
-
-export function TodoProvider({ children }) {
+export function useTodos() {
   // useRef
   const searchRef = useRef(null);
 
@@ -82,29 +80,23 @@ export function TodoProvider({ children }) {
     newTodo.splice(indexTodo, 1);
     saveTodos(newTodo);
   };
-  return (
-    <TodoContext.Provider
-      value={{
-        loading,
-        error,
-        todos,
-        completedTodos,
-        totalTodos,
-        searchValue,
-        setSearchValue,
-        deleteItem,
-        addTodo,
-        marcarCompletado,
-        textSearch,
-        openModal,
-        setOpenModal,
-        trashHistorial,
-        searchRef,
-        darkMode,
-        toggleDarkMode,
-      }}
-    >
-      {children}
-    </TodoContext.Provider>
-  );
+  return {
+    loading,
+    error,
+    todos,
+    completedTodos,
+    totalTodos,
+    searchValue,
+    setSearchValue,
+    deleteItem,
+    addTodo,
+    marcarCompletado,
+    textSearch,
+    openModal,
+    setOpenModal,
+    trashHistorial,
+    searchRef,
+    darkMode,
+    toggleDarkMode,
+  };
 }

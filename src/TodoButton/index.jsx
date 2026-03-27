@@ -1,15 +1,10 @@
 import React from 'react';
-import { TodoContext } from '../TodoContext';
-
 // icons import
 import { FaTrashAlt, FaSearch, FaHandPointLeft } from 'react-icons/fa';
 import { IoReloadOutline } from 'react-icons/io5';
 import { TiPlus } from 'react-icons/ti';
 
-function TodoButton() {
-  const { setOpenModal, trashHistorial, searchRef } =
-    React.useContext(TodoContext);
-
+function TodoButton({ setOpenModal, trashHistorial, searchRef }) {
   const reload = () => {
     window.location.reload();
   };

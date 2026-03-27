@@ -1,7 +1,13 @@
 function TodoList(props) {
   return (
     <div className="col-span-3">
-      <ul className="grid gap-5 p-5">{props.children}</ul>
+      <ul className="grid gap-5 p-5">
+        {props.children}
+        {props.error && props.onError()}
+        {props.loading && props.onLoading()}
+        {!props.loading && props.todos.length === 0 && props.onEmptyTodos()}
+        {props.render()}
+      </ul>
     </div>
   );
 }

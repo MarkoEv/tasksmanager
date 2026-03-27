@@ -34,6 +34,7 @@ export function useTodos() {
 
   // estado de search
   const [searchValue, setSearchValue] = React.useState('');
+
   // converir en minusculas
   const textSearch = searchValue.toLocaleLowerCase();
 

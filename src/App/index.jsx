@@ -40,7 +40,31 @@ export default function App() {
         trashHistorial={trashHistorial}
         searchRef={searchRef}
       />
-      <TodoList>
+      {/* render props */}
+      <TodoList
+        error={error}
+        loading={loading}
+        todos={todos}
+        textSearch={textSearch}
+        onError={() => <TodosError />}
+        onLoading={() => <TodosLoading />}
+        onEmptyTodos={() => <EmptyTodos />}
+        render={() => {
+          return todos
+            .filter((i) => {
+              return i.text.toLocaleLowerCase().includes(textSearch);
+            })
+            .map((item) => (
+              <TodoItem
+                key={item.id}
+                text={item.text}
+                completed={item.completed}
+                onComplete={() => marcarCompletado(item.id)}
+                onDelete={() => deleteItem(item.id)}
+              />
+            ));
+        }}
+      >
         <TodoInfo />
         <TodoCount totalTodos={totalTodos} completedTodos={completedTodos} />
         <TodoSearch
@@ -48,32 +72,8 @@ export default function App() {
           setSearchValue={setSearchValue}
           searchRef={searchRef}
         />
-        {loading && (
-          <>
-            <TodosLoading />
-            <TodosLoading />
-            <TodosLoading />
-            <TodosLoading />
-            <TodosLoading />
-          </>
-        )}
-        {error && <TodosError />}
-        {!loading && todos.length === 0 && <EmptyTodos />}
-
-        {todos
-          .filter((i) => {
-            return i.text.toLocaleLowerCase().includes(textSearch);
-          })
-          .map((item) => (
-            <TodoItem
-              key={item.id}
-              text={item.text}
-              completed={item.completed}
-              onComplete={() => marcarCompletado(item.id)}
-              onDelete={() => deleteItem(item.id)}
-            />
-          ))}
       </TodoList>
+
       {openModal && (
         <Modal>
           <ItemForm setOpenModal={setOpenModal} addTodo={addTodo} />
